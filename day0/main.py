@@ -13,41 +13,16 @@ def write_output(file, data):
     
 
 def convert_data(data):
-    arr1 = []
-    arr2 = []
-    for line in data:
-        [a, b] = line.split('   ')
-        arr1.append(a)
-        arr2.append(b)
-    # sort arr1 and arr2
-    arr1.sort()
-    arr2.sort()
-    return arr1, arr2
+    pass
 
 def part1(data):
-    arr1, arr2 = convert_data(data)
-    res = 0
-    for i in range(len(arr1)):
-        res += abs(int(arr1[i]) - int(arr2[i]))
-    return res    
+    pass
 
 def part2_convert_data(data):
-    dict1 = {}
-    dict2 = {}
-    for line in data:
-        [a, b] = line.split('   ')
-        dict1[a] = 1 if a not in dict1 else dict1[a] + 1
-        dict2[b] = 1 if b not in dict2 else dict2[b] + 1
-    
-    return dict1, dict2
+    pass
 
 def part2(data):
-    dict1, dict2 = part2_convert_data(data)
-    
-    res = 0
-    for key in dict1:
-        res += (dict1[key] * (dict2[key] if key in dict2 else 0))*int(key)
-    return res
+    pass
 
 def main():
     test_file = 'test.txt'
@@ -57,7 +32,7 @@ def main():
     print("---- Part 1 ----")
     test_input = read_input(test_file)
     test_output = part1(test_input)
-    part1_expected_test_output = 11
+    part1_expected_test_output = 0
     if test_output == part1_expected_test_output:
         print('Test passed')
     else:
@@ -73,7 +48,7 @@ def main():
 
     # part 2
     print("---- Part 2 ----")
-    part2_expected_test_output = 31
+    part2_expected_test_output = 0
     test_output = part2(test_input)
     if test_output == part2_expected_test_output:
         print('Test passed')
