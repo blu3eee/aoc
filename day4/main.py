@@ -20,7 +20,6 @@ def part1(data: list[str]) -> int:
     res = 0
     
     def check_word_puzzle(coords: list[tuple[int, int]]):
-        print('Checking:', coords)
         for i in range(len(coords)):
             coord = coords[i]
             # first, need to check if the coord is within the bounds of the data
@@ -46,7 +45,7 @@ def part1(data: list[str]) -> int:
                 for direction in possible_directions:
                     if check_word_puzzle(direction):
                         res += 1     
-    
+
     return res
 
 def part2_convert_data(data):
@@ -54,7 +53,29 @@ def part2_convert_data(data):
 
 def part2(data: list[str]) -> int:
     res = 0
-    
+    def check_if_valid(word1: list[tuple[int, int]], word2: list[tuple[int, int]]):
+        # we need to check if the coords are within the bounds of the data
+        # and each word will form a valid word 'MAS' or 'SAM' when combined
+        for coord in word1 + word2:
+            if coord[0] < 0 or coord[0] >= len(data) or coord[1] < 0 or coord[1] >= len(data[0]):
+                return False
+        
+        word1 = ''.join([data[coord[0]][coord[1]] for coord in word1])
+        word2 = ''.join([data[coord[0]][coord[1]] for coord in word2])
+        if (word1 == 'MAS' or word1 == 'SAM') and (word2 == 'SAM' or word2 == 'MAS'):
+            return True       
+
+        return False
+
+    for i in range(1, len(data)-1):
+        for j in range(1, len(data[i])-1):
+            c = data[i][j]
+            if c == 'A':
+                word1 = [(i-1, j-1), (i, j), (i+1, j+1)]
+                word2 = [(i+1, j-1), (i, j), (i-1, j+1)]
+                if check_if_valid(word1, word2):
+                    res += 1
+            
     return res
 
 def main():
@@ -81,7 +102,7 @@ def main():
 
     # part 2
     print("---- Part 2 ----")
-    part2_expected_test_output = 0
+    part2_expected_test_output = 9
     test_output = part2(test_input)
     if test_output == part2_expected_test_output:
         print('Test passed')
