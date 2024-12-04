@@ -15,14 +15,47 @@ def write_output(file, data):
 def convert_data(data):
     pass
 
-def part1(data):
-    pass
+word = 'XMAS'
+def part1(data: list[str]) -> int:
+    res = 0
+    
+    def check_word_puzzle(coords: list[tuple[int, int]]):
+        print('Checking:', coords)
+        for i in range(len(coords)):
+            coord = coords[i]
+            # first, need to check if the coord is within the bounds of the data
+            if coord[0] < 0 or coord[0] >= len(data) or coord[1] < 0 or coord[1] >= len(data[0]) or data[coord[0]][coord[1]] != word[i]:
+                return False
+        return True
+    
+    for i in range(len(data)):
+        for j in range(len(data[i])):
+            c = data[i][j]
+            if c == word[0]:
+                # check if the word is in the puzzle in any of the 8 directions
+                possible_directions = [
+                    [(i, j), (i, j+1), (i, j+2), (i, j+3)],
+                    [(i, j), (i+1, j), (i+2, j), (i+3, j)],
+                    [(i, j), (i+1, j+1), (i+2, j+2), (i+3, j+3)],
+                    [(i, j), (i+1, j-1), (i+2, j-2), (i+3, j-3)],
+                    [(i, j), (i, j-1), (i, j-2), (i, j-3)],
+                    [(i, j), (i-1, j), (i-2, j), (i-3, j)],
+                    [(i, j), (i-1, j-1), (i-2, j-2), (i-3, j-3)],
+                    [(i, j), (i-1, j+1), (i-2, j+2), (i-3, j+3)]
+                ]
+                for direction in possible_directions:
+                    if check_word_puzzle(direction):
+                        res += 1     
+    
+    return res
 
 def part2_convert_data(data):
     pass
 
-def part2(data):
-    pass
+def part2(data: list[str]) -> int:
+    res = 0
+    
+    return res
 
 def main():
     test_file = 'test.txt'
