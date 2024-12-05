@@ -1,6 +1,6 @@
-use std::{ fs::File, collections::HashMap, cmp::Ordering, io::Write };
+use std::{ collections::HashMap, io::Write };
 
-use utils::{ read_input, create_output_file, sort::quicksort };
+use utils::{ create_output_file, read_input, read_test_input };
 
 fn normalize_data(input: Vec<String>) -> (String, HashMap<String, (String, String)>) {
     let content = input.join("\n");
@@ -32,7 +32,7 @@ fn normalize_data(input: Vec<String>) -> (String, HashMap<String, (String, Strin
     (directions, network)
 }
 
-fn part1(input: Vec<String>, mut output_file: &File) {
+fn part1(input: Vec<String>) -> usize {
     let (directions, network) = normalize_data(input);
     println!("{network:?}");
 
@@ -51,11 +51,12 @@ fn part1(input: Vec<String>, mut output_file: &File) {
             right.as_str()
         };
     }
-    println!("steps {steps}");
+    steps
 }
 
-fn part2(input: Vec<String>, mut output_file: &File) {
+fn part2(input: Vec<String>) -> usize {
     let (directions, network) = normalize_data(input);
+    let mut output_file = create_output_file(8);
     let _ = output_file.write_all(&format!("network {network:?}\n").as_bytes());
 
     let mut starting_nodes: Vec<(String, usize)> = network
@@ -92,7 +93,7 @@ fn part2(input: Vec<String>, mut output_file: &File) {
         let left_right: usize = if (directions.as_bytes()[index] as char) == 'L' { 0 } else { 1 };
 
         for (cur_node_index, (current_node, step)) in starting_nodes.clone().iter().enumerate() {
-            // println!("current node {} index {}", current_node.to_string(), index);
+            // println!("current node {} index {}".to_string(), current_node.to_string(), index);
             if step <= &steps {
                 // check for memoized hash map
                 if
@@ -135,14 +136,62 @@ fn part2(input: Vec<String>, mut output_file: &File) {
             }
         }
     }
-    println!("steps {steps}");
+    steps
 }
 
 fn main() {
-    let input = read_input(8);
+    let day_number = 8;
+    // part 1
+    // run test first
+    let test_input = read_test_input(day_number);
 
-    let output_file = create_output_file(8);
+    let test_result = part1(test_input.clone());
 
-    // part1(input.clone(), &output_file);
-    part2(input.clone(), &output_file);
+    let expected_test_output = 2;
+    assert_eq!(test_result, expected_test_output);
+
+    let input = read_input(day_number);
+
+    let result = part1(input.clone());
+    println!("part1 result {result}");
+
+    // part 2
+    // run test first
+    // test input for part 2
+    /*
+    LR
+
+        11A = (11B, XXX)
+        11B = (XXX, 11Z)
+        11Z = (11B, XXX)
+        22A = (22B, XXX)
+        22B = (22C, 22C)
+        22C = (22Z, 22Z)
+        22Z = (22B, 22B)
+        XXX = (XXX, XXX)
+
+    */
+    let test_input_2: Vec<String> = [
+        "LR".to_string(),
+        "".to_string(),
+        "11A = (11B, XXX)".to_string(),
+        "11B = (XXX, 11Z)".to_string(),
+        "11Z = (11B, XXX)".to_string(),
+        "22A = (22B, XXX)".to_string(),
+        "22B = (22C, 22C)".to_string(),
+        "22C = (22Z, 22Z)".to_string(),
+        "22Z = (22B, 22B)".to_string(),
+        "XXX = (XXX, XXX)".to_string(),
+    ]
+        .iter()
+        .map(|x| x.to_string())
+        .collect();
+    let test_result = part2(test_input_2.clone());
+
+    let expected_test_output = 6;
+    assert_eq!(test_result, expected_test_output);
+
+    let result_part2 = part2(input.clone());
+
+    println!("part2 result {result_part2}");
 }

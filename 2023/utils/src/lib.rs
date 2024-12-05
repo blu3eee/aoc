@@ -12,6 +12,15 @@ pub fn read_input(day_number: usize) -> Vec<String> {
         .collect()
 }
 
+pub fn read_test_input(day_number: usize) -> Vec<String> {
+    let path = format!("day{day_number:02}/src/test.txt");
+    fs::read_to_string(&path)
+        .expect(&format!("{path:?} not available"))
+        .lines()
+        .map(|line| line.to_string())
+        .collect()
+}
+
 pub fn create_output_file(day_number: usize) -> File {
     let path = format!("day{day_number:02}/src/output.txt");
     fs::File::create(path).expect("cant create output file")
