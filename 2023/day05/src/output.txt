@@ -1,0 +1,272 @@
+---- PART 1 ----
+seed 1044452533
+location 2353608708
+seed 40389941
+location 3398139886
+seed 3710737290
+location 3948321411
+seed 407166728
+location 836040384
+seed 1552449232
+location 1154854138
+seed 639689359
+location 2576349602
+seed 3327654041
+location 3541168864
+seed 26912583
+location 3384662528
+seed 3440484265
+location 1260160771
+seed 219136668
+location 1453307527
+seed 1126550158
+location 1721763052
+seed 296212400
+location 1438074228
+seed 2332393052
+location 2077523743
+seed 229950158
+location 1464121017
+seed 200575068
+location 4094094094
+seed 532702401
+location 1893936008
+seed 4163696272
+location 922938175
+seed 44707860
+location 3402457805
+seed 3067657312
+location 3188667258
+seed 45353528
+location 3403103473
+closest location 836040384
+---- PART 2 ----
+seed range 1044452533 , 40389941
+location: 2353608708
+seed step: 48049440
+seed range 3710737290 , 407166728
+location: 3948321411
+seed step: 61522581
+location: 515244023
+seed step: 42064908
+location: 358218184
+seed step: 14505408
+location: 3059221430
+seed step: 1510714
+location: 3060732144
+seed step: 22905424
+location: 3413639433
+seed step: 67038012
+location: 2223867273
+seed step: 65701882
+location: 2961556571
+seed step: 13480958
+location: 3336845004
+seed step: 604013
+location: 2492935748
+seed step: 2592335
+location: 2161008230
+seed step: 24650075
+location: 1582194569
+seed step: 31502946
+location: 2901303489
+seed step: 28412924
+location: 3564525042
+seed step: 1851109
+location: 1468004524
+seed step: 17688165
+location: 1194459751
+seed step: 9346247
+location: 683066098
+seed step: 4972422
+seed range 1552449232 , 639689359
+location: 1154854138
+seed step: 25781769
+location: 2819317181
+seed step: 32094061
+location: 3545238809
+seed step: 5299009
+location: 1095728908
+seed step: 23446195
+location: 204313376
+seed step: 14231813
+location: 3235604626
+seed step: 59658095
+location: 2099911356
+seed step: 29092480
+location: 300866774
+seed step: 31754584
+location: 3196290755
+seed step: 34249700
+location: 4040728152
+seed step: 6036601
+location: 2523124217
+seed step: 9121120
+location: 2863986103
+seed step: 29977721
+location: 1012133876
+seed step: 14470198
+location: 37405178
+seed step: 21348250
+location: 199863500
+seed step: 3581065
+location: 203444565
+seed step: 868811
+location: 10834440
+seed step: 17790148
+location: 358218184
+seed step: 22905424
+location: 358218184
+seed step: 67038012
+location: 506921086
+seed step: 5052917
+location: 3480677445
+seed step: 7104037
+location: 2812734456
+seed step: 6582725
+location: 2146332274
+seed step: 14675956
+location: 204313376
+seed step: 59658095
+location: 886868069
+seed step: 9254984
+location: 743910440
+seed step: 11786654
+location: 755697094
+seed step: 4390550
+location: 1055927934
+seed step: 32696189
+location: 358218184
+seed step: 67038012
+seed range 3327654041 , 26912583
+location: 3541168864
+seed step: 4069945
+location: 836186785
+seed step: 7655734
+location: 475181169
+seed step: 20393953
+seed range 3440484265 , 219136668
+location: 1260160771
+seed step: 12636261
+location: 3747887417
+seed step: 22144407
+location: 10834440
+seed step: 22144407
+location: 204313376
+seed step: 31754584
+location: 1769366567
+seed step: 48214204
+location: 2353608708
+seed step: 61522581
+location: 358218184
+seed step: 22905424
+seed range 1126550158 , 296212400
+location: 515244023
+seed step: 42064908
+location: 204313376
+seed step: 59658095
+location: 158248638
+seed step: 41614862
+location: 973947276
+seed step: 19444193
+location: 10834440
+seed step: 48214204
+location: 10834440
+seed step: 61522581
+location: 336868041
+seed step: 12526672
+location: 2519320531
+seed step: 3803686
+location: 4046764753
+seed step: 17307942
+seed range 2332393052 , 229950158
+location: 2077523743
+seed step: 22387613
+location: 734822143
+seed step: 9088297
+location: 1002343673
+seed step: 9790203
+location: 2300122428
+seed step: 9737051
+location: 3229238495
+seed step: 6366131
+location: 2715634399
+seed step: 16609477
+location: 2732243876
+seed step: 14317392
+location: 2851411242
+seed step: 12574861
+location: 10834440
+seed step: 22144407
+location: 2207802712
+seed step: 16064561
+location: 218545189
+seed step: 1932450
+location: 10834440
+seed step: 6582725
+location: 1125757828
+seed step: 12624347
+location: 600713965
+seed step: 64683135
+location: 204313376
+seed step: 34249700
+seed range 200575068 , 532702401
+location: 4094094094
+seed step: 15122297
+location: 2518728752
+seed step: 591779
+location: 1450460003
+seed step: 17544521
+location: 3115704372
+seed step: 47730870
+location: 1423426363
+seed step: 27033640
+location: 3775066418
+seed step: 6051670
+location: 204313376
+seed step: 59658095
+location: 428780221
+seed step: 28425348
+location: 831606944
+seed step: 4579841
+location: 3550537818
+seed step: 13987224
+location: 1523584141
+seed step: 20686539
+location: 2129003836
+seed step: 17328438
+location: 3781118088
+seed step: 13499094
+location: 1834048031
+seed step: 65628464
+location: 665397100
+seed step: 17668998
+location: 4025611133
+seed step: 7620050
+location: 4033231183
+seed step: 3971811
+location: 10834440
+seed step: 32696189
+location: 3090332455
+seed step: 7447074
+location: 2544507253
+seed step: 54427824
+location: 1899676495
+seed step: 27302405
+location: 3595043768
+seed step: 63145141
+seed range 4163696272 , 44707860
+location: 922938175
+seed step: 51009101
+seed range 3067657312 , 45353528
+location: 3188667258
+seed step: 7623497
+location: 2792433518
+seed step: 20300938
+location: 1485692689
+seed step: 6210447
+location: 3163435242
+seed step: 5759224
+location: 688038520
+seed step: 138200432
+closest location 10834440

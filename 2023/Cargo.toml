@@ -1,0 +1,10 @@
+[workspace]
+members = ["utils", "day*"]
+resolver = "2"
+
+
+[workspace.package]
+authors = ["Khai Nguyen"]
+
+[workspace.dependencies]
+utils = { path = "./utils", version = "0.1.0" }
