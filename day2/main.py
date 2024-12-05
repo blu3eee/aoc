@@ -13,7 +13,7 @@ def write_output(file, data):
     
 
 def convert_data(data):
-    converted_data = []
+    converted_data: list[list[int]] = []
     for line in data:
         line_data = []
         for n in line.split(' '):
@@ -57,12 +57,17 @@ def part2(data):
     safe_count = 0
 
     safe_lines = []
-    for line in converted_data:
+
+    def get_levels(line: list[str]) -> list[int]:
         levels = []
-        
         for i in range(1, len(line)):
             level = line[i] - line[i-1]
             levels.append(level)
+        return levels
+
+    for line in converted_data:
+        levels = get_levels(line)
+        
         is_increasing = is_increasing_levels(levels)
         
         if is_safe(levels, is_increasing):    
@@ -70,28 +75,38 @@ def part2(data):
             safe_lines.append(line)
             continue
         
-        already_removed = False
-        # check if can be fixed
-        for i in range(len(levels)):
-            level = levels[i]
-            if level == 0 or abs(level) > 3 or (is_increasing and level < 0) or (not is_increasing and level > 0):
-                if i == 0:
-                    already_removed = True
-                    continue
-                if i == len(levels) - 1:
-                    if not already_removed:
-                        safe_count+=1
-                    break
-                # check if can be fixed
-                new_levels = levels[0:i] + [levels[i]+levels[i+1]] + levels[i+2:]
-                if is_safe(new_levels, is_increasing):
-                    print ('check if can be fixed', line, levels)
-                    print('old levels:', levels)
-                    print('new levels:', new_levels, is_increasing)
-                    print('fixed')
-                    safe_count+=1
-                    safe_lines.append(line)
-                    break        
+        for i in range (len(levels)+1):
+            new_line = line.copy()
+            new_line.pop(i)
+            new_levels = get_levels(new_line)
+            
+            if is_safe(new_levels, is_increasing):    
+                safe_count += 1
+                safe_lines.append(new_line)
+                break
+            
+        # already_removed = False
+        # # check if can be fixed
+        # for i in range(len(levels)):
+        #     level = levels[i]
+        #     if level == 0 or abs(level) > 3 or (is_increasing and level < 0) or (not is_increasing and level > 0):
+        #         if i == 0:
+        #             already_removed = True
+        #             continue
+        #         if i == len(levels) - 1:
+        #             if not already_removed:
+        #                 safe_count+=1
+        #             break
+        #         # check if can be fixed
+        #         new_levels = levels[0:i] + [levels[i]+levels[i+1]] + levels[i+2:]
+        #         if is_safe(new_levels, is_increasing):
+        #             print ('check if can be fixed', line, levels)
+        #             print('old levels:', levels)
+        #             print('new levels:', new_levels, is_increasing)
+        #             print('fixed')
+        #             safe_count+=1
+        #             safe_lines.append(line)
+        #             break        
     write_output('safe.txt', '\n'.join(' '.join([str(x) for x in line]) for line in safe_lines))
     return safe_count
 
