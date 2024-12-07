@@ -13,16 +13,67 @@ def write_output(file, data):
     
 
 def convert_data(data):
-    pass
+    import re
+    converted = []
+    for line in data:
+        result = re.search(r'(\d+):(( \d+)+)', line)
+        
+        expected_result =int (result.group(1))
+        elements = [
+            int(element.strip()) 
+            for element in result.group(2).strip().split(" ")
+        ]
+
+        converted.append((expected_result, elements))
+    return converted
 
 def part1(data):
-    pass
+    data = convert_data(data)
+    res = 0
+    def recurring_total(nodes):
+        totals = []
+        if len(nodes) == 2:
+            totals = [nodes[0] + nodes[1], nodes[0] * nodes[1]]
+        else:
+            cur_node = nodes[0]
+            totals = [(cur_node + total) for total in recurring_total(nodes[1:])]  + [(cur_node * total) for total in recurring_total(nodes[1:])]
+        
+        return totals
+
+    for (expected_result, elements) in data:
+        possible_results = recurring_total(elements[::-1])
+        
+        if expected_result in possible_results:
+            res += expected_result    
+        
+    return res
 
 def part2_convert_data(data):
     pass
 
 def part2(data):
-    pass
+    import math
+    data = convert_data(data)
+    res = 0
+
+    for (expected_result, elements) in data:
+        def recurring_total(nodes):
+            totals = []
+            if len(nodes) == 2:
+                totals = [x for x in [nodes[0] + nodes[1], nodes[0] * nodes[1], nodes[0] + nodes[1]*math.pow(10,len(str(nodes[0])))]]
+                # print(totals)
+            else:
+                cur_node = nodes[0]
+                totals = [(cur_node + total) for total in recurring_total(nodes[1:])] + [(cur_node * total) for total in recurring_total(nodes[1:])] + [(total*math.pow(10,len(str(cur_node))) + cur_node) for total in recurring_total(nodes[1:])]
+            
+            return [x for x in totals if x <= expected_result]
+        possible_results = recurring_total(elements[::-1])
+        # print(expected_result,possible_results)
+        if expected_result in possible_results:
+            res += expected_result
+        
+    return res
+    
 
 def main():
     test_file = 'test.txt'
@@ -32,7 +83,7 @@ def main():
     print("---- Part 1 ----")
     test_input = read_input(test_file)
     test_output = part1(test_input)
-    part1_expected_test_output = 0
+    part1_expected_test_output = 3749
     if test_output == part1_expected_test_output:
         print('Test passed')
     else:
@@ -48,7 +99,7 @@ def main():
 
     # part 2
     print("---- Part 2 ----")
-    part2_expected_test_output = 0
+    part2_expected_test_output = 11387
     test_output = part2(test_input)
     if test_output == part2_expected_test_output:
         print('Test passed')
