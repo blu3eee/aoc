@@ -1,4 +1,3 @@
-
 def read_input(file):
     # read all the lines in the file and return them as a list
     with open(file, 'r') as f:
@@ -39,31 +38,6 @@ def part1(data):
 
     return len(seen)
 
-def is_looped(nmap: list[list[str]], cpos: tuple[int, int], dir: str) -> bool:
-    map = nmap.copy()
-    n, m = len(map), len(map[0])
-
-    cx, cy = cpos
-    steps = {}
-
-    prev_dir = dir
-    while cx in range(n) and cy in range(m):
-        nx = cx + dirs[directions.index(dir)][0]
-        ny = cy + dirs[directions.index(dir)][1]
-        
-        if nx in range(n) and ny in range(m) and map[nx][ny] == '#':
-            dir = directions[(directions.index(dir) + 1) % 4]
-        else:
-            cx, cy = nx, ny
-
-        if prev_dir != dir:
-            if (cx, cy) in steps and dir in steps[(cx, cy)]:
-                return True
-            
-        prev_dir = dir
-        steps[(cx, cy)] = [dir] if (cx, cy) not in steps else steps[(cx, cy)] + [dir]
-
-    return False
 
 def part2(data):
     g = [list(line) for line in data]
@@ -77,7 +51,6 @@ def part2(data):
                 ix, iy = i, j
                 break
     
-    g2 = [[y for y in r] for r in g]
     ans = 0
     for ox in range (n):
         for oy in range(m):
@@ -100,13 +73,11 @@ def part2(data):
                         break
             
             if (cx, cy, cd) in seen:
-                print('got', cx, cy, cd)
                 ans += 1
-                g2[ox][oy] = '?'
 
             g[ox][oy] = '.'  
             
-    print(g2)
+    
     return ans
 
 def main():
@@ -143,8 +114,8 @@ def main():
         print('Got:', test_output)
         return
     
-    # output = part2(input)
-    # print('Part 2 Output:', output)
+    output = part2(input)
+    print('Part 2 Output:', output)
     
 
 if __name__ == '__main__':
